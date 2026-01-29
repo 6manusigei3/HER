@@ -7,17 +7,31 @@
 </head>
 <body>
   <div class="card">
-    <h1>Yay!! 🥹❤️</h1>
-    <p>
-      That makes me the happiest person alive.
-    </p>
-    <p>
-      I might still be in school on Valentine’s Day, but I want this to feel perfect for you.
-    </p>
+    <h1 id="celebrate"></h1>
+    <p id="message"></p>
 
     <button onclick="location.href='gift.html'">
-      Continue 💌
+      One more thing 💝
     </button>
   </div>
+
+  <script src="script.js"></script>
+  <script>
+    const nicknames = ["my favorite person", "my love", "mon chéri"];
+    const name = nicknames[Math.floor(Math.random() * nicknames.length)];
+
+    typeText(
+      document.getElementById("celebrate"),
+      `Yay!! 🥹❤️`
+    );
+
+    setTimeout(() => {
+      typeText(
+        document.getElementById("message"),
+        `That honestly means the world to me, ${name}.`
+      );
+    }, 1000);
+  </script>
 </body>
 </html>
+
