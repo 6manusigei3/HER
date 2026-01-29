@@ -2,15 +2,19 @@ function goYes() {
   window.location.href = "yes.html";
 }
 
-// Typed text effect (safe)
+// Typed text effect (works with line breaks and spacing)
 function typeText(element, text, speed = 40) {
   if (!element) return;
-
+  element.innerHTML = ""; // use innerHTML to preserve <br>
   let i = 0;
-  element.innerText = "";
 
   const interval = setInterval(() => {
-    element.innerText += text.charAt(i);
+    const char = text.charAt(i);
+    if (char === "\n") {
+      element.innerHTML += "<br>";
+    } else {
+      element.innerHTML += char;
+    }
     i++;
     if (i === text.length) clearInterval(interval);
   }, speed);
@@ -35,7 +39,7 @@ function chooseGift(choice) {
   result.innerText = message;
 }
 
-// Easter egg logic (safe)
+// Easter egg logic
 window.onload = () => {
   const heart = document.getElementById("heart");
   const secret = document.getElementById("secret");
@@ -50,4 +54,5 @@ window.onload = () => {
     }
   });
 };
+
 
