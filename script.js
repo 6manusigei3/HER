@@ -2,10 +2,13 @@ function goYes() {
   window.location.href = "yes.html";
 }
 
-// Typed text effect
+// Typed text effect (safe)
 function typeText(element, text, speed = 40) {
+  if (!element) return;
+
   let i = 0;
   element.innerText = "";
+
   const interval = setInterval(() => {
     element.innerText += text.charAt(i);
     i++;
@@ -13,9 +16,12 @@ function typeText(element, text, speed = 40) {
   }, speed);
 }
 
-// Gift choice logic + memory
+// Gift choice logic
 function chooseGift(choice) {
   localStorage.setItem("giftChoice", choice);
+
+  const result = document.getElementById("result");
+  if (!result) return;
 
   let message = "";
   if (choice === "valentine") {
@@ -26,17 +32,22 @@ function chooseGift(choice) {
     message = "I like that 😌 I’ll surprise you.";
   }
 
-  document.getElementById("result").innerText = message;
+  result.innerText = message;
 }
 
-// Easter egg (heart click)
-let clicks = 0;
-const heart = document.getElementById("heart");
-if (heart) {
+// Easter egg logic (safe)
+window.onload = () => {
+  const heart = document.getElementById("heart");
+  const secret = document.getElementById("secret");
+
+  if (!heart || !secret) return;
+
+  let clicks = 0;
   heart.addEventListener("click", () => {
     clicks++;
     if (clicks === 5) {
-      document.getElementById("secret").classList.remove("hidden");
+      secret.classList.remove("hidden");
     }
   });
-}
+};
+
