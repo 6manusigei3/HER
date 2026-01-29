@@ -17,8 +17,9 @@ body {
   animation: fadeIn 1s ease;
 }
 
-h1, h2 {
+h1, h2, p {
   color: #ff4d6d;
+  white-space: pre-wrap; /* preserves spaces and line breaks */
 }
 
 button {
@@ -43,6 +44,7 @@ button:hover {
 #result {
   margin-top: 15px;
   font-weight: bold;
+  color: #444;
 }
 
 #heart {
