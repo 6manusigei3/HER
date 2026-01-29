@@ -7,16 +7,30 @@
 </head>
 <body>
   <div class="card">
-    <h1>Hi my love 💕</h1>
-    <p>
-      I know distance is annoying, but I have something important to ask you…
-    </p>
-    <h2>Will you be my Valentine? 💌</h2>
+    <h1 id="title"></h1>
+    <p id="intro"></p>
+    <h2 id="question"></h2>
 
     <button onclick="goYes()">Yes ❤️</button>
     <button onclick="goYes()">Of course 😌</button>
   </div>
 
   <script src="script.js"></script>
+  <script>
+    typeText(document.getElementById("title"), "Hi my love 💕");
+    setTimeout(() => {
+      typeText(
+        document.getElementById("intro"),
+        "I know distance isn’t ideal, but I have something important to ask you…"
+      );
+    }, 800);
+
+    setTimeout(() => {
+      typeText(
+        document.getElementById("question"),
+        "Will you be my Valentine? 💌"
+      );
+    }, 2000);
+  </script>
 </body>
 </html>
