@@ -17,20 +17,24 @@
 
   <script src="script.js"></script>
   <script>
-    typeText(document.getElementById("title"), "Hi my love 💕");
-    setTimeout(() => {
-      typeText(
-        document.getElementById("intro"),
-        "I know distance isn’t ideal, but I have something important to ask you…"
-      );
-    }, 800);
+    window.onload = () => {
+      typeText(document.getElementById("title"), "Hi my love 💕");
 
-    setTimeout(() => {
-      typeText(
-        document.getElementById("question"),
-        "Will you be my Valentine? 💌"
-      );
-    }, 2000);
+      setTimeout(() => {
+        typeText(
+          document.getElementById("intro"),
+          "I know distance isn’t ideal, but I have something important to ask you…"
+        );
+      }, 900);
+
+      setTimeout(() => {
+        typeText(
+          document.getElementById("question"),
+          "Will you be my Valentine? 💌"
+        );
+      }, 2200);
+    };
   </script>
 </body>
 </html>
+
