@@ -10,23 +10,63 @@ body {
 .card {
   background: white;
   padding: 30px;
-  border-radius: 15px;
+  border-radius: 16px;
   text-align: center;
-  max-width: 400px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  max-width: 420px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  animation: fadeIn 1s ease;
+}
+
+h1, h2 {
+  color: #ff4d6d;
 }
 
 button {
-  margin: 10px;
-  padding: 12px 20px;
+  display: block;
+  width: 100%;
+  margin: 10px 0;
+  padding: 12px;
   border: none;
-  border-radius: 10px;
+  border-radius: 12px;
   background: #ff6b81;
   color: white;
   font-size: 16px;
   cursor: pointer;
+  transition: transform 0.2s ease;
 }
 
 button:hover {
   background: #ff4757;
+  transform: scale(1.03);
 }
+
+#result {
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+#heart {
+  display: inline-block;
+  margin-top: 15px;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+  margin-top: 10px;
+  color: #555;
+  font-style: italic;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
