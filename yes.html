@@ -17,21 +17,24 @@
 
   <script src="script.js"></script>
   <script>
-    const nicknames = ["my favorite person", "my love", "mon chéri"];
-    const name = nicknames[Math.floor(Math.random() * nicknames.length)];
+    window.onload = () => {
+      const nicknames = ["my favorite person", "my love", "mon chéri"];
+      const name = nicknames[Math.floor(Math.random() * nicknames.length)];
 
-    typeText(
-      document.getElementById("celebrate"),
-      `Yay!! 🥹❤️`
-    );
-
-    setTimeout(() => {
       typeText(
-        document.getElementById("message"),
-        `That honestly means the world to me, ${name}.`
+        document.getElementById("celebrate"),
+        "Yay!! 🥹❤️"
       );
-    }, 1000);
+
+      setTimeout(() => {
+        typeText(
+          document.getElementById("message"),
+          `That honestly means the world to me, ${name}.`
+        );
+      }, 900);
+    };
   </script>
 </body>
 </html>
+
 
