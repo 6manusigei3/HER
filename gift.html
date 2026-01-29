@@ -2,27 +2,41 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Your Choice 💝</title>
+  <title>Your Choice 🤍</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="card">
-    <h1>One more thing 🤍</h1>
-    <p>How would you like your Valentine’s gift?</p>
+    <h1>Just a small question 🤍</h1>
+
+    <p>
+      Since I might still be in school on Valentine’s Day,  
+      how would you like your gift?
+    </p>
 
     <button onclick="chooseGift('valentine')">
       Send it to me on Valentine’s Day 💌
     </button>
 
     <button onclick="chooseGift('meet')">
-      Save it for when we meet 🫶
+      Save it for when we meet later 🫶
     </button>
 
     <button onclick="chooseGift('both')">
-      A bit of both 👀
+      A bit of both (surprise me) 👀
     </button>
+
+    <p id="result"></p>
+
+    <!-- Hidden Easter Egg -->
+    <p id="secret" class="hidden">
+      If you found this… it means you really know me 🤍
+    </p>
+
+    <span id="heart">❤️</span>
   </div>
 
   <script src="script.js"></script>
 </body>
 </html>
+
