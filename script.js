@@ -6,7 +6,7 @@ function navigateSmooth(url) {
     return;
   }
 
-  card.classList.add('fade-out'); // fade out current card
+  card.classList.add('fade-out'); // fade out
   setTimeout(() => {
     window.location.href = url;
   }, 600);
@@ -28,7 +28,7 @@ function typeText(element, text, speed = 40) {
   }, speed);
 }
 
-// Gift choice logic
+// Gift choice messages
 function chooseGift(choice) {
   localStorage.setItem("giftChoice", choice);
 
@@ -36,14 +36,14 @@ function chooseGift(choice) {
   if (!result) return;
 
   let message = "";
-  if (choice === "date") message = "Perfect 🥰 I can’t wait for our special date!";
-  else if (choice === "gift") message = "Yay 🎁 I hope you love this little surprise!";
-  else if (choice === "surprise") message = "Excited 😌 I’ll plan something just for you!";
+  if (choice === "send") message = "Got it! I’ll make sure it reaches you on Valentine’s Day 💌";
+  else if (choice === "save") message = "Perfect! Can’t wait to give this to you in person 🫶";
+  else if (choice === "maybe") message = "I’ll do my best to be there with you on Valentine’s Day 🥹❤️";
 
   result.innerText = message;
 }
 
-// DOMContentLoaded listener
+// DOMContentLoaded
 window.addEventListener('DOMContentLoaded', () => {
   const heart = document.getElementById("heart");
   const secret = document.getElementById("secret");
@@ -56,10 +56,10 @@ window.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Landing page buttons (index.html)
+  // Only attach landing page buttons on index.html
   const landingButtons = document.querySelectorAll('body .card button');
   landingButtons.forEach(btn => {
-    if (btn && btn.id === "") { // only buttons with no ID
+    if (btn && btn.id === "") { // buttons with no ID
       btn.addEventListener('click', () => navigateSmooth('yes.html'));
       btn.addEventListener('mouseover', () => btn.style.transform = 'scale(1.05)');
       btn.addEventListener('mouseout', () => btn.style.transform = 'scale(1)');
