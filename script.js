@@ -9,13 +9,13 @@ function navigateSmooth(url) {
   card.classList.add('fade-out'); // fade out current card
   setTimeout(() => {
     window.location.href = url;
-  }, 600); // matches CSS transition
+  }, 600);
 }
 
-// Typed text effect (works with spacing + line breaks)
+// Typed text effect
 function typeText(element, text, speed = 40) {
   if (!element) return;
-  element.innerHTML = ""; // allows <br>
+  element.innerHTML = "";
   let i = 0;
 
   const interval = setInterval(() => {
@@ -28,7 +28,7 @@ function typeText(element, text, speed = 40) {
   }, speed);
 }
 
-// Gift choice logic (gift.html)
+// Gift choice logic
 function chooseGift(choice) {
   localStorage.setItem("giftChoice", choice);
 
@@ -43,7 +43,7 @@ function chooseGift(choice) {
   result.innerText = message;
 }
 
-// Easter egg logic (gift.html)
+// DOMContentLoaded listener
 window.addEventListener('DOMContentLoaded', () => {
   const heart = document.getElementById("heart");
   const secret = document.getElementById("secret");
@@ -59,7 +59,7 @@ window.addEventListener('DOMContentLoaded', () => {
   // Landing page buttons (index.html)
   const landingButtons = document.querySelectorAll('body .card button');
   landingButtons.forEach(btn => {
-    if (btn.id !== "nextButton") {
+    if (btn && btn.id === "") { // only buttons with no ID
       btn.addEventListener('click', () => navigateSmooth('yes.html'));
       btn.addEventListener('mouseover', () => btn.style.transform = 'scale(1.05)');
       btn.addEventListener('mouseout', () => btn.style.transform = 'scale(1)');
