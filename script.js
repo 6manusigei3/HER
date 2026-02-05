@@ -1,5 +1,15 @@
-function goYes() {
-  window.location.href = "yes.html";
+// Smooth page navigation
+function navigateSmooth(url) {
+  const card = document.querySelector('.card');
+  if (!card) {
+    window.location.href = url; 
+    return;
+  }
+
+  card.classList.add('fade-out'); // trigger fade out
+  setTimeout(() => {
+    window.location.href = url;
+  }, 600); // match CSS transition duration
 }
 
 // Typed text effect (works with spacing + line breaks)
@@ -54,3 +64,13 @@ window.onload = () => {
     }
   });
 };
+
+// Button hover scaling
+document.querySelectorAll('button').forEach(btn => {
+  btn.addEventListener('mouseover', () => {
+    btn.style.transform = 'scale(1.05)';
+  });
+  btn.addEventListener('mouseout', () => {
+    btn.style.transform = 'scale(1)';
+  });
+});
