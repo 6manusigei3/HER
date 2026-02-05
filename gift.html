@@ -63,11 +63,8 @@
       border-radius: 0 0 10px 10px;
     }
 
-    /* Bunny animation */
-    .bunny.show {
-      display: block;
-      animation: bounce 0.8s ease forwards;
-    }
+    /* Bunny animations */
+    .bunny.show { display: block; animation: bounce 0.8s ease forwards; }
 
     @keyframes bounce {
       0% { transform: translateY(-20px); opacity: 0; }
@@ -75,18 +72,38 @@
       100% { transform: translateY(0); }
     }
 
-    /* Song button styling */
+    @keyframes blink {
+      0%, 90%, 100% { transform: scaleY(1); }
+      95% { transform: scaleY(0); }
+    }
+
+    @keyframes wiggle {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(10deg); }
+      75% { transform: rotate(-10deg); }
+    }
+
+    .bunny.blink .eye { animation: blink 0.3s ease; }
+    .bunny.wiggle .ear.left { animation: wiggle 0.5s ease forwards; }
+    .bunny.wiggle .ear.right { animation: wiggle 0.5s ease forwards; }
+
+    /* Song button styling — light blue */
     #songBtn {
       display: block;
       margin: 20px auto;
       padding: 10px 20px;
-      background: #ff77aa;
+      background: #6ec1e4; /* light blue */
       color: #fff;
       border: none;
       border-radius: 10px;
       cursor: pointer;
       font-size: 16px;
-      transition: transform 0.2s;
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    #songBtn:hover {
+      background: #5bb0d6; /* slightly darker on hover */
+      transform: scale(1.05);
     }
   </style>
 </head>
@@ -139,6 +156,13 @@
       const bunny = document.getElementById("bunny");
       const songBtn = document.getElementById("songBtn");
 
+      function animateBunny() {
+        bunny.classList.add('blink', 'wiggle');
+        setTimeout(() => {
+          bunny.classList.remove('blink', 'wiggle');
+        }, 600);
+      }
+
       function showGiftMessage(choice) {
         let message = "";
         if (choice === "send") message = "Got it! I’ll make sure it reaches you on Valentine’s Day 💌";
@@ -147,8 +171,9 @@
 
         document.getElementById("result").innerText = message;
 
-        // Show bunny
+        // Show bunny and animate
         bunny.classList.add("show");
+        animateBunny();
       }
 
       if (sendBtn) sendBtn.addEventListener('click', () => showGiftMessage('send'));
