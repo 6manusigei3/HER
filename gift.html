@@ -155,10 +155,10 @@
       if (saveBtn) saveBtn.addEventListener('click', () => showGiftMessage('save'));
       if (maybeBtn) maybeBtn.addEventListener('click', () => showGiftMessage('maybe'));
 
-      // Song button
+      // Song button — YouTube link
       if (songBtn) {
         songBtn.addEventListener('click', () => {
-          window.open('SONG_LINK_HERE', '_blank'); // replace with YouTube/Spotify link
+          window.open('https://www.youtube.com/watch?v=IpFX2vq8HKw', '_blank');
         });
         songBtn.addEventListener('mouseover', () => songBtn.style.transform = 'scale(1.05)');
         songBtn.addEventListener('mouseout', () => songBtn.style.transform = 'scale(1)');
