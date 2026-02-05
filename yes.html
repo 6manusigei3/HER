@@ -10,10 +10,8 @@
     <h1 id="celebrate"></h1>
     <p id="message"></p>
 
-    <!-- Button now has unique id -->
-    <button id="nextButton">
-      One more thing 💝
-    </button>
+    <!-- Unique ID for this button -->
+    <button id="nextButton">One more thing 💝</button>
   </div>
 
   <script src="script.js"></script>
@@ -27,8 +25,17 @@
           `That honestly means the world to me, Ivy.\nEvery moment with you feels like home.`
         );
       }, 900);
+
+      // Attach navigation to this button ONLY
+      const nextBtn = document.getElementById("nextButton");
+      if (nextBtn) {
+        nextBtn.addEventListener('click', () => navigateSmooth('gift.html'));
+        nextBtn.addEventListener('mouseover', () => nextBtn.style.transform = 'scale(1.05)');
+        nextBtn.addEventListener('mouseout', () => nextBtn.style.transform = 'scale(1)');
+      }
     };
   </script>
 </body>
 </html>
+
 
