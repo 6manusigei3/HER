@@ -10,13 +10,14 @@
     <h1>Just one more thing 🤍</h1>
 
     <p>
-      Ivy, I wanted this to feel special and thoughtful,<br>
-      so tell me what you’d enjoy the most 💖
+      Ivy, I want this to be perfect for you,<br>
+      so tell me what feels most comfortable 💖
     </p>
 
-    <button id="dateBtn">A cute date, just us 🥰</button>
-    <button id="giftBtn">A surprise gift 🎁</button>
-    <button id="surpriseBtn">Let me plan something for you 💌</button>
+    <!-- Three options -->
+    <button id="sendBtn">Send it to you 💌</button>
+    <button id="saveBtn">Save it for when we meet 🫶</button>
+    <button id="maybeBtn">If possible, I’ll be there 💖</button>
 
     <p id="result"></p>
 
@@ -31,14 +32,14 @@
   <script src="script.js"></script>
   <script>
     window.onload = () => {
-      // Attach gift button behavior
-      const dateBtn = document.getElementById("dateBtn");
-      const giftBtn = document.getElementById("giftBtn");
-      const surpriseBtn = document.getElementById("surpriseBtn");
+      // Button behavior
+      const sendBtn = document.getElementById("sendBtn");
+      const saveBtn = document.getElementById("saveBtn");
+      const maybeBtn = document.getElementById("maybeBtn");
 
-      if (dateBtn) dateBtn.addEventListener('click', () => chooseGift('date'));
-      if (giftBtn) giftBtn.addEventListener('click', () => chooseGift('gift'));
-      if (surpriseBtn) surpriseBtn.addEventListener('click', () => chooseGift('surprise'));
+      if (sendBtn) sendBtn.addEventListener('click', () => chooseGift('send'));
+      if (saveBtn) saveBtn.addEventListener('click', () => chooseGift('save'));
+      if (maybeBtn) maybeBtn.addEventListener('click', () => chooseGift('maybe'));
 
       // Heart Easter egg
       const heart = document.getElementById("heart");
@@ -51,8 +52,8 @@
         });
       }
 
-      // Button hover scaling
-      [dateBtn, giftBtn, surpriseBtn].forEach(btn => {
+      // Button hover effect
+      [sendBtn, saveBtn, maybeBtn].forEach(btn => {
         if (!btn) return;
         btn.addEventListener('mouseover', () => btn.style.transform = 'scale(1.05)');
         btn.addEventListener('mouseout', () => btn.style.transform = 'scale(1)');
