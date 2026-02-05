@@ -2,10 +2,10 @@ function goYes() {
   window.location.href = "yes.html";
 }
 
-// Typed text effect (works with line breaks and spacing)
+// Typed text effect (works with spacing + line breaks)
 function typeText(element, text, speed = 40) {
   if (!element) return;
-  element.innerHTML = ""; // use innerHTML to preserve <br>
+  element.innerHTML = ""; // use innerHTML to allow <br>
   let i = 0;
 
   const interval = setInterval(() => {
@@ -28,12 +28,12 @@ function chooseGift(choice) {
   if (!result) return;
 
   let message = "";
-  if (choice === "valentine") {
-    message = "Perfect 💌 I’ll send it to you on Valentine’s Day.";
-  } else if (choice === "meet") {
-    message = "Deal 🫶 I want to see your reaction in person.";
-  } else {
-    message = "I like that 😌 I’ll surprise you.";
+  if (choice === "date") {
+    message = "Perfect 🥰 I can’t wait for our special date!";
+  } else if (choice === "gift") {
+    message = "Yay 🎁 I hope you love this little surprise!";
+  } else if (choice === "surprise") {
+    message = "Excited 😌 I’ll plan something just for you!";
   }
 
   result.innerText = message;
@@ -54,5 +54,3 @@ window.onload = () => {
     }
   });
 };
-
-
