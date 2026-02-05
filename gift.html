@@ -14,17 +14,9 @@
       so tell me what you’d enjoy the most 💖
     </p>
 
-    <button onclick="chooseGift('date')">
-      A cute date, just us 🥰
-    </button>
-
-    <button onclick="chooseGift('gift')">
-      A surprise gift 🎁
-    </button>
-
-    <button onclick="chooseGift('surprise')">
-      Let me plan something for you 💌
-    </button>
+    <button id="dateBtn">A cute date, just us 🥰</button>
+    <button id="giftBtn">A surprise gift 🎁</button>
+    <button id="surpriseBtn">Let me plan something for you 💌</button>
 
     <p id="result"></p>
 
@@ -37,5 +29,36 @@
   </div>
 
   <script src="script.js"></script>
+  <script>
+    window.onload = () => {
+      // Attach gift button behavior
+      const dateBtn = document.getElementById("dateBtn");
+      const giftBtn = document.getElementById("giftBtn");
+      const surpriseBtn = document.getElementById("surpriseBtn");
+
+      if (dateBtn) dateBtn.addEventListener('click', () => chooseGift('date'));
+      if (giftBtn) giftBtn.addEventListener('click', () => chooseGift('gift'));
+      if (surpriseBtn) surpriseBtn.addEventListener('click', () => chooseGift('surprise'));
+
+      // Heart Easter egg
+      const heart = document.getElementById("heart");
+      const secret = document.getElementById("secret");
+      if (heart && secret) {
+        let clicks = 0;
+        heart.addEventListener("click", () => {
+          clicks++;
+          if (clicks === 5) secret.classList.remove("hidden");
+        });
+      }
+
+      // Button hover scaling
+      [dateBtn, giftBtn, surpriseBtn].forEach(btn => {
+        if (!btn) return;
+        btn.addEventListener('mouseover', () => btn.style.transform = 'scale(1.05)');
+        btn.addEventListener('mouseout', () => btn.style.transform = 'scale(1)');
+      });
+    };
+  </script>
 </body>
 </html>
+
