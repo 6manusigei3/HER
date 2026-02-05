@@ -5,6 +5,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
+  overflow: hidden;
 }
 
 .card {
@@ -14,7 +15,15 @@ body {
   text-align: center;
   max-width: 420px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-  animation: fadeIn 1s ease;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeIn 1s ease forwards; /* fade in on load */
+  transition: opacity 0.6s ease, transform 0.6s ease; /* smooth fade for page changes */
+}
+
+.fade-out {
+  opacity: 0 !important;
+  transform: translateY(-20px) !important;
 }
 
 h1, h2, p {
@@ -38,7 +47,6 @@ button {
 
 button:hover {
   background: #ff4757;
-  transform: scale(1.03);
 }
 
 #result {
@@ -51,6 +59,11 @@ button:hover {
   margin-top: 15px;
   font-size: 24px;
   cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+#heart:hover {
+  animation: heartbeat 0.8s infinite;
 }
 
 .hidden {
@@ -70,4 +83,13 @@ button:hover {
     transform: translateY(0);
   }
 }
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  25% { transform: scale(1.2); }
+  50% { transform: scale(1); }
+  75% { transform: scale(1.2); }
+}
+
+
 
