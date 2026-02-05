@@ -64,10 +64,20 @@ window.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Make landing page buttons responsive
+  // Landing page buttons
   document.querySelectorAll('body .card button').forEach(btn => {
-    btn.addEventListener('click', () => navigateSmooth('yes.html'));
-    btn.addEventListener('mouseover', () => btn.style.transform = 'scale(1.05)');
-    btn.addEventListener('mouseout', () => btn.style.transform = 'scale(1)');
+    if (btn.id !== "nextButton") { // skip Yes page button
+      btn.addEventListener('click', () => navigateSmooth('yes.html'));
+      btn.addEventListener('mouseover', () => btn.style.transform = 'scale(1.05)');
+      btn.addEventListener('mouseout', () => btn.style.transform = 'scale(1)');
+    }
   });
+
+  // Yes page button
+  const nextBtn = document.getElementById("nextButton");
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => navigateSmooth('gift.html'));
+    nextBtn.addEventListener('mouseover', () => nextBtn.style.transform = 'scale(1.05)');
+    nextBtn.addEventListener('mouseout', () => nextBtn.style.transform = 'scale(1)');
+  }
 });
