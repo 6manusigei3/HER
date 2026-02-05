@@ -4,6 +4,91 @@
   <meta charset="UTF-8">
   <title>Your Choice 🤍</title>
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* Bunny styles */
+    .bunny {
+      width: 80px;
+      height: 100px;
+      position: relative;
+      margin: 20px auto;
+      display: none;
+    }
+
+    .bunny .ear {
+      width: 20px;
+      height: 50px;
+      background: #fff;
+      border-radius: 50%;
+      position: absolute;
+      top: 0;
+      border: 2px solid #ccc;
+    }
+
+    .bunny .ear.left { left: 10px; transform: rotate(-10deg); }
+    .bunny .ear.right { right: 10px; transform: rotate(10deg); }
+
+    .bunny .face {
+      width: 60px;
+      height: 60px;
+      background: #fff;
+      border-radius: 50%;
+      border: 2px solid #ccc;
+      position: absolute;
+      top: 40px;
+      left: 10px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .bunny .eyes {
+      display: flex;
+      justify-content: space-between;
+      width: 30px;
+      margin-bottom: 5px;
+    }
+
+    .bunny .eye {
+      width: 6px;
+      height: 6px;
+      background: #333;
+      border-radius: 50%;
+    }
+
+    .bunny .smile {
+      width: 20px;
+      height: 10px;
+      border-bottom: 2px solid #333;
+      border-radius: 0 0 10px 10px;
+    }
+
+    /* Bunny animation */
+    .bunny.show {
+      display: block;
+      animation: bounce 0.8s ease forwards;
+    }
+
+    @keyframes bounce {
+      0% { transform: translateY(-20px); opacity: 0; }
+      50% { transform: translateY(5px); opacity: 1; }
+      100% { transform: translateY(0); }
+    }
+
+    /* Song button styling */
+    #songBtn {
+      display: block;
+      margin: 20px auto;
+      padding: 10px 20px;
+      background: #ff77aa;
+      color: #fff;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 16px;
+      transition: transform 0.2s;
+    }
+  </style>
 </head>
 <body>
   <div class="card">
@@ -21,6 +106,22 @@
 
     <p id="result"></p>
 
+    <!-- Bunny -->
+    <div class="bunny" id="bunny">
+      <div class="ear left"></div>
+      <div class="ear right"></div>
+      <div class="face">
+        <div class="eyes">
+          <div class="eye"></div>
+          <div class="eye"></div>
+        </div>
+        <div class="smile"></div>
+      </div>
+    </div>
+
+    <!-- Song button -->
+    <button id="songBtn">🎵 Play "Blue" by Young Kai</button>
+
     <!-- Easter egg -->
     <p id="secret" class="hidden">
       You found my little secret… just like you make my heart feel at home ❤️
@@ -32,14 +133,43 @@
   <script src="script.js"></script>
   <script>
     window.onload = () => {
-      // Button behavior
       const sendBtn = document.getElementById("sendBtn");
       const saveBtn = document.getElementById("saveBtn");
       const maybeBtn = document.getElementById("maybeBtn");
+      const bunny = document.getElementById("bunny");
+      const songBtn = document.getElementById("songBtn");
 
-      if (sendBtn) sendBtn.addEventListener('click', () => chooseGift('send'));
-      if (saveBtn) saveBtn.addEventListener('click', () => chooseGift('save'));
-      if (maybeBtn) maybeBtn.addEventListener('click', () => chooseGift('maybe'));
+      function showGiftMessage(choice) {
+        let message = "";
+        if (choice === "send") message = "Got it! I’ll make sure it reaches you on Valentine’s Day 💌";
+        else if (choice === "save") message = "Perfect! Can’t wait to give this to you in person 🫶";
+        else if (choice === "maybe") message = "I’ll do my best to be there with you on Valentine’s Day 🥹❤️";
+
+        document.getElementById("result").innerText = message;
+
+        // Show bunny
+        bunny.classList.add("show");
+      }
+
+      if (sendBtn) sendBtn.addEventListener('click', () => showGiftMessage('send'));
+      if (saveBtn) saveBtn.addEventListener('click', () => showGiftMessage('save'));
+      if (maybeBtn) maybeBtn.addEventListener('click', () => showGiftMessage('maybe'));
+
+      // Song button
+      if (songBtn) {
+        songBtn.addEventListener('click', () => {
+          window.open('SONG_LINK_HERE', '_blank'); // replace with YouTube/Spotify link
+        });
+        songBtn.addEventListener('mouseover', () => songBtn.style.transform = 'scale(1.05)');
+        songBtn.addEventListener('mouseout', () => songBtn.style.transform = 'scale(1)');
+      }
+
+      // Bunny and button hover effects
+      [sendBtn, saveBtn, maybeBtn].forEach(btn => {
+        if (!btn) return;
+        btn.addEventListener('mouseover', () => btn.style.transform = 'scale(1.05)');
+        btn.addEventListener('mouseout', () => btn.style.transform = 'scale(1)');
+      });
 
       // Heart Easter egg
       const heart = document.getElementById("heart");
@@ -51,15 +181,9 @@
           if (clicks === 5) secret.classList.remove("hidden");
         });
       }
-
-      // Button hover effect
-      [sendBtn, saveBtn, maybeBtn].forEach(btn => {
-        if (!btn) return;
-        btn.addEventListener('mouseover', () => btn.style.transform = 'scale(1.05)');
-        btn.addEventListener('mouseout', () => btn.style.transform = 'scale(1)');
-      });
     };
   </script>
 </body>
 </html>
+
 
