@@ -10,7 +10,7 @@
     <h1 id="celebrate"></h1>
     <p id="message"></p>
 
-    <button onclick="location.href='gift.html'">
+    <button onclick="navigateSmooth('gift.html')">
       One more thing 💝
     </button>
   </div>
@@ -18,15 +18,12 @@
   <script src="script.js"></script>
   <script>
     window.onload = () => {
-      const nicknames = ["my favorite person", "my love", "mon chéri"];
-      const name = nicknames[Math.floor(Math.random() * nicknames.length)];
-
       typeText(document.getElementById("celebrate"), "Yay!! 🥹❤️");
 
       setTimeout(() => {
         typeText(
           document.getElementById("message"),
-          `That honestly means the world to me, ${name}.\nEvery moment with you feels like home.`
+          `That honestly means the world to me, Ivy.\nEvery moment with you feels like home.`
         );
       }, 900);
     };
