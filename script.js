@@ -1,12 +1,12 @@
-// Smooth page navigation
+// Smooth page navigation for all buttons
 function navigateSmooth(url) {
   const card = document.querySelector('.card');
   if (!card) {
-    window.location.href = url; 
+    window.location.href = url;
     return;
   }
 
-  card.classList.add('fade-out'); // trigger fade out
+  card.classList.add('fade-out'); // fade out current card
   setTimeout(() => {
     window.location.href = url;
   }, 600); // match CSS transition duration
@@ -50,27 +50,24 @@ function chooseGift(choice) {
 }
 
 // Easter egg logic
-window.onload = () => {
+window.addEventListener('DOMContentLoaded', () => {
   const heart = document.getElementById("heart");
   const secret = document.getElementById("secret");
 
-  if (!heart || !secret) return;
+  if (heart && secret) {
+    let clicks = 0;
+    heart.addEventListener("click", () => {
+      clicks++;
+      if (clicks === 5) {
+        secret.classList.remove("hidden");
+      }
+    });
+  }
 
-  let clicks = 0;
-  heart.addEventListener("click", () => {
-    clicks++;
-    if (clicks === 5) {
-      secret.classList.remove("hidden");
-    }
-  });
-};
-
-// Button hover scaling
-document.querySelectorAll('button').forEach(btn => {
-  btn.addEventListener('mouseover', () => {
-    btn.style.transform = 'scale(1.05)';
-  });
-  btn.addEventListener('mouseout', () => {
-    btn.style.transform = 'scale(1)';
+  // Make landing page buttons responsive
+  document.querySelectorAll('body .card button').forEach(btn => {
+    btn.addEventListener('click', () => navigateSmooth('yes.html'));
+    btn.addEventListener('mouseover', () => btn.style.transform = 'scale(1.05)');
+    btn.addEventListener('mouseout', () => btn.style.transform = 'scale(1)');
   });
 });
